@@ -6,6 +6,8 @@ use App\Models\Movies;
 use App\Http\Requests\StoreMoviesRequest;
 use App\Http\Requests\UpdateMoviesRequest;
 
+use Inertia\Inertia;
+
 class MoviesController extends Controller
 {
     /**
@@ -13,7 +15,8 @@ class MoviesController extends Controller
      */
     public function index()
     {
-        //
+        $movies = Movies::all();
+        return Inertia::render('Movies/Index', ['movies' => $movies]);
     }
 
     /**
@@ -21,7 +24,7 @@ class MoviesController extends Controller
      */
     public function create()
     {
-        //
+        //Se usa la misma vista para crear los registros
     }
 
     /**
@@ -29,7 +32,11 @@ class MoviesController extends Controller
      */
     public function store(StoreMoviesRequest $request)
     {
-        //
+        // La entrada de datos se valida en StoreMoviesRequest para respetar 
+        // el principio SOLID de Single Responsability
+        $movie = new Movies($request->validated());
+        $movie->save();
+        return redirect('movie');
     }
 
     /**
@@ -51,16 +58,22 @@ class MoviesController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateMoviesRequest $request, Movies $movies)
+    public function update(UpdateMoviesRequest $request, $id)
     {
-        //
+        // La entrada de datos se valida en UpdateMoviesRequest para respetar 
+        // el principio SOLID de Single Responsability
+        $movie = Movies::find($id);
+        $movie->fill($request->validated())->saveOrFail();
+        return redirect('movie');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Movies $movies)
+    public function destroy($id)
     {
-        //
+        $movie = Movies::find($id);
+        $movie->delete();
+        return redirect('movie');
     }
 }

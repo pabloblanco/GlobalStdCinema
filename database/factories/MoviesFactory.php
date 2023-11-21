@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Movies;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +18,9 @@ class MoviesFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'name' => $this->faker->sentence(2), 
+            'publish' => now(), 
+            'image' =>  $this->faker->randomElement(['image1.jpg', 'image2.jpg', 'image3.jpg']),
         ];
     }
 }

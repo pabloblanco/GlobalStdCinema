@@ -13,7 +13,8 @@ class TurnsController extends Controller
      */
     public function index()
     {
-        //
+        $turns = Turns::all();
+        return Inertia::render('Turns/Index', ['turns' => $turns]);
     }
 
     /**
@@ -21,7 +22,7 @@ class TurnsController extends Controller
      */
     public function create()
     {
-        //
+        //Se usa la misma vista para crear los registros
     }
 
     /**
@@ -29,7 +30,11 @@ class TurnsController extends Controller
      */
     public function store(StoreTurnsRequest $request)
     {
-        //
+        // La entrada de datos se valida en StoreTurnsRequest para respetar 
+        // el principio SOLID de Single Responsability
+        $turn = new Turns($request->validated());
+        $turn->save();
+        return redirect('turn');
     }
 
     /**
@@ -51,16 +56,22 @@ class TurnsController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateTurnsRequest $request, Turns $turns)
+    public function update(UpdateTurnsRequest $request, $id)
     {
-        //
+        // La entrada de datos se valida en UpdateTurnsRequest para respetar 
+        // el principio SOLID de Single Responsability
+        $turn = Turns::find($id);
+        $turn->fill($request->validated())->saveOrFail();
+        return redirect('turn');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Turns $turns)
+    public function destroy($id)
     {
-        //
+        $turn = Turns::find($id);
+        $turn->delete();
+        return redirect('turn');
     }
 }

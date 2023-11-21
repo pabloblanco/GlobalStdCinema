@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Movies extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['name', 'publish', 'image', 'status'];
+
+    public function turns()
+    {
+        return $this->belongToMany(Turns::class,'turns_movies');
+    }
 }
