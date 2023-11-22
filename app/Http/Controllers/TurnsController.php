@@ -56,22 +56,20 @@ class TurnsController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateTurnsRequest $request, $id)
+    public function update(UpdateTurnsRequest $request, Turns $turns)
     {
         // La entrada de datos se valida en UpdateTurnsRequest para respetar 
         // el principio SOLID de Single Responsability
-        $turn = Turns::find($id);
-        $turn->fill($request->validated())->saveOrFail();
+        $turns->fill($request->validated())->saveOrFail();
         return redirect('turn');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy($id)
+    public function destroy(Turns $turns)
     {
-        $turn = Turns::find($id);
-        $turn->delete();
+        $turns->delete();
         return redirect('turn');
     }
 }

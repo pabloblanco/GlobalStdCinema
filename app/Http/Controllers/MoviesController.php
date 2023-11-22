@@ -58,22 +58,20 @@ class MoviesController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateMoviesRequest $request, $id)
+    public function update(UpdateMoviesRequest $request, Movies $movies)
     {
         // La entrada de datos se valida en UpdateMoviesRequest para respetar 
         // el principio SOLID de Single Responsability
-        $movie = Movies::find($id);
-        $movie->fill($request->validated())->saveOrFail();
+        $movies->fill($request->validated())->saveOrFail();
         return redirect('movie');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy($id)
+    public function destroy(Movies $movies)
     {
-        $movie = Movies::find($id);
-        $movie->delete();
+        $movies->delete();
         return redirect('movie');
     }
 }
