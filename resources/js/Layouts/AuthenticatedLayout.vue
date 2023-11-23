@@ -33,6 +33,16 @@ const showingNavigationDropdown = ref(false);
                                     Dashboard
                                 </NavLink>
                             </div>
+                            <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                                <NavLink :href="route('movies.index')" :active="route().current('movies.index')">
+                                    Movies
+                                </NavLink>
+                            </div>
+                            <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                                <NavLink :href="route('turns.index')" :active="route().current('turns.index')">
+                                    Turns
+                                </NavLink>
+                            </div>                                                        
                         </div>
 
                         <div class="hidden sm:flex sm:items-center sm:ms-6">
@@ -116,7 +126,17 @@ const showingNavigationDropdown = ref(false);
                             Dashboard
                         </ResponsiveNavLink>
                     </div>
-
+                    <div class="pt-2 pb-3 space-y-1">
+                        <ResponsiveNavLink :href="route('movies.index')" :active="route().current('movies.index')">
+                            Movies
+                        </ResponsiveNavLink>
+                    </div>
+                    <div class="pt-2 pb-3 space-y-1">
+                        <ResponsiveNavLink :href="route('turns.index')" :active="route().current('turns.index')">
+                            Turns
+                        </ResponsiveNavLink>
+                    </div>
+                                        
                     <!-- Responsive Settings Options -->
                     <div class="pt-4 pb-1 border-t border-gray-200 dark:border-gray-600">
                         <div class="px-4">

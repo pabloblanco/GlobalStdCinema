@@ -11,7 +11,7 @@ class UpdateTurnsRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,8 @@ class UpdateTurnsRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'turn' => 'required|string|max:5', 
+            'status' => 'required',
         ];
     }
 }
