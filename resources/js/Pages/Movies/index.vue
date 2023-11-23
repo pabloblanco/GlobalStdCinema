@@ -65,6 +65,14 @@ const deleteMovie = (id, name) =>{
     })
 };
 
+const openModal =(movie) => {
+    document.getElementById('id2').value = movie.id;
+    document.getElementById('name2').value = movie.name;
+    document.getElementById('publish2').value = movie.publish;
+    document.getElementById('image2').value = movie.image;
+    document.getElementById('status2').value = movie.status;
+}
+
 </script>
 
 <template>
@@ -105,12 +113,12 @@ const deleteMovie = (id, name) =>{
                                         <td>{{ movie.status }}</td>
                                         <td>
                                             <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#modalEdit">
-                                                <i class="fa-solid fa-edit"></i>
+                                                <i class="fa-solid fa-edit" @click="openModal(movie)"></i>
                                             </button>
                                         </td>
                                         <td>
                                             <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#modalTurn">
-                                                <i class="fa-solid fa-edit"></i>
+                                                <i class="fa-solid fa-bars"></i>
                                             </button>
                                         </td>
                                         <td>

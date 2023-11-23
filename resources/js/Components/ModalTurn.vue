@@ -10,12 +10,20 @@
         id:props.turn.id,turn:props.turn.turn,status:props.turn.status
     });
     const save = () =>{
-        form.post(route('turn.store'));
+        form.post(route('turn.store'),{
+            onSuccess: () => cerrar()
+        });
     }
     const update = () =>{
         var id = document.getElementById('id2').value;
-        form.put(route('turn.update',id));
+        form.put(route('turn.update',id),{
+            onSuccess: () => cerrar()
+        });
     }
+    const cerrar = () =>{
+        form.reset();
+        document.querySelector('#cerrar'+props.op).click();
+    };    
 </script>
 <template>
     <div class="modal fade" :id="modal" tabindex="-1" aria-hidden="true">

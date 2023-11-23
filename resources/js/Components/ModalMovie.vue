@@ -10,12 +10,20 @@
         id:props.movie.id,name:props.movie.name,publish:props.movie.publish,image:props.movie.image,status:props.movie.status
     });
     const save = () =>{
-        form.post(route('movie.store'));
+        form.post(route('movie.store'),{
+            onSuccess: () => cerrar()
+        });
     }
     const update = () =>{
         var id = document.getElementById('id2').value;
-        form.put(route('movie.update',id));
+        form.put(route('movie.update',id),{
+            onSuccess: () => cerrar()
+        });
     }
+    const cerrar = () =>{
+        form.reset();
+        document.querySelector('#cerrar'+props.op).click();
+    };
 </script>
 <template>
     <div class="modal fade" :id="modal" tabindex="-1" aria-hidden="true">

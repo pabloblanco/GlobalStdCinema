@@ -65,6 +65,11 @@ const deleteTurn = (id, turn) =>{
     })
 };
 
+const openModal =(turn) => {
+    document.getElementById('id2').value = turn.id;
+    document.getElementById('status2').value = turn.status;
+}
+
 </script>
 
 <template>
@@ -101,12 +106,12 @@ const deleteTurn = (id, turn) =>{
                                         <td>{{ movie.turn }}</td>
                                         <td>{{ movie.status }}</td>
                                         <td>
-                                            <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#modalEdit">
+                                            <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#modalEdit" @click="openModal(movie)">
                                                 <i class="fa-solid fa-edit"></i>
                                             </button>
                                         </td>
                                         <td>
-                                            <button v-if="movie.status = true" class="btn btn-warning" @click="deactivateTurnStatus(turn.id, turn.turn)">
+                                            <button v-if="turn.status = true" class="btn btn-warning" @click="deactivateTurnStatus(turn.id, turn.turn)">
                                                 <i class="fa-solid fa-lock"></i>
                                             </button>
                                             <button v-else class="btn btn-warning" @click="activateTurnStatus(turn.id, turn.turn)">
