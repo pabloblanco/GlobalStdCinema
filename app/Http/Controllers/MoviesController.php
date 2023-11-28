@@ -15,7 +15,7 @@ class MoviesController extends Controller
      */
     public function index()
     {
-        $movies = Movies::all();
+        $movies = Movies::with(turns)->paginate(25);
         return Inertia::render('Movies/Index', ['movies' => $movies]);
     }
 
@@ -34,8 +34,7 @@ class MoviesController extends Controller
     {
         // La entrada de datos se valida en StoreMoviesRequest para respetar 
         // el principio SOLID de Single Responsability
-        $movie = new Movies($request->validated());
-        $movie->save();
+        Movies::create($request->validated());
         return redirect('movie');
     }
 

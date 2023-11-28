@@ -13,7 +13,7 @@ class TurnsController extends Controller
      */
     public function index()
     {
-        $turns = Turns::all();
+        $turns = Turns::with(movies)->paginate(25);
         return Inertia::render('Turns/Index', ['turns' => $turns]);
     }
 

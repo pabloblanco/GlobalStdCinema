@@ -1,4 +1,10 @@
 <script>
+export default {
+    name: 'MoviesIndex'
+}
+</script>
+
+<script setup>
 
 import AuthenticatedLayout from '@Layouts/AuthenticatedLayout.vue';
 import ModalMovie from '@/Components/ModalMovie.vue';
@@ -106,7 +112,7 @@ const openModal =(movie) => {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr v-for="movie, i in movies" :key="movie.id">
+                                    <tr v-for="movie, i in movies.data" :key="movie.id">
                                         <td>{{ i+1 }}</td>
                                         <td>{{ movie.name }}</td>
                                         <td>{{ movie.publish }}</td>

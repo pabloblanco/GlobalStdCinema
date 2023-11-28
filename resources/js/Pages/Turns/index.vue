@@ -1,4 +1,10 @@
 <script>
+export default {
+    name: 'TurnsIndex'
+}
+</script>
+
+<script setup>
 
 import AuthenticatedLayout from '@Layouts/AuthenticatedLayout.vue';
 import ModalTurn from '@/Components/ModalTurn.vue';
@@ -8,7 +14,7 @@ import { useForm } from '@inertiajs/vue3';
 
 const form = useForm({});
 const props = defineProps({
-    movies:{type:Object}
+    turns:{type:Object}
 });
 
 const activateTurnStatus = (id, turn) =>{
@@ -101,12 +107,12 @@ const openModal =(turn) => {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr v-for="movie, i in movies" :key="movie.id">
+                                    <tr v-for="turn, i in turns.data" :key="turn.id">
                                         <td>{{ i+1 }}</td>
-                                        <td>{{ movie.turn }}</td>
-                                        <td>{{ movie.status }}</td>
+                                        <td>{{ turn.turn }}</td>
+                                        <td>{{ turn.status }}</td>
                                         <td>
-                                            <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#modalEdit" @click="openModal(movie)">
+                                            <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#modalEdit" @click="openModal(turn)">
                                                 <i class="fa-solid fa-edit"></i>
                                             </button>
                                         </td>
