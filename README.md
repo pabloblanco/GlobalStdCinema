@@ -47,64 +47,75 @@ Los aspectos de seguridad se desarrollaron mediante la implementación de una es
 
     sudo systemctl status docker
 
-    ***Colocar captura de pantalla de consola
+![Screenshot from 2023-12-12 09-00-58](https://github.com/pabloblanco/GlobalStdCinema/assets/11873645/30e7abbd-b6d2-4e82-89e3-c8e0ff369876)
 
 3.- Levanta la imagen desde la carpeta raiz del proyecto
 
-    En Linux ==> ./vendor/bin/sail up
+    En Linux ==> vendor/bin/sail up
     En Windows desde la consola de WSL ==> vendor\bin\sail up
 
-    ***Colocar captura de pantalla de consola
+![Screenshot from 2023-12-12 09-06-31](https://github.com/pabloblanco/GlobalStdCinema/assets/11873645/89e73d3e-d318-4faa-b631-1e4500cd4872)
 
     Puedes verificar que la imagen esta corriendo correctamente en el Docker Desktop
-    
+ 
+ ![Screenshot from 2023-12-12 09-07-56](https://github.com/pabloblanco/GlobalStdCinema/assets/11873645/93741850-a56c-4bef-b40d-634b28a245b2)
+   
 4.- Abre la aplicacion en el navegador
 
-    url ==> localhost
-
-    ***Colocar captura de pantalla del browser
+    url ==> http://localhost/login
     
 5.- Registra un usuario
 
-    ***Colocar captura de pantalla del browser
+![Screenshot from 2023-12-12 09-12-03](https://github.com/pabloblanco/GlobalStdCinema/assets/11873645/e4b275d7-0f4d-49fa-a1ee-15807d8ce347)
     
 6.- Inicia sesión
 
-    ***Colocar captura de pantalla del browser
-    
+![Screenshot from 2023-12-12 09-08-54](https://github.com/pabloblanco/GlobalStdCinema/assets/11873645/ebc9285a-df2a-4cb1-a6cb-85c72a34d9b8)
+
 7.- Crea un registro para película
 
-    ***Colocar captura de pantalla del browser
-    
+![Screenshot from 2023-12-12 08-49-46](https://github.com/pabloblanco/GlobalStdCinema/assets/11873645/fbc160ea-9cba-4bee-945b-b1e551c6b2d9)
+
 8.- Crea un registro para turno
 
-    ***Colocar captura de pantalla del browser
-    
+![Screenshot from 2023-12-12 08-57-02](https://github.com/pabloblanco/GlobalStdCinema/assets/11873645/c6e7b2e2-f233-4e13-930d-0f1b1ef79d8c)
+
 9.- Asigna un turno a la película
 
     ***Colocar captura de pantalla del browser
     
 10.- Edita la información de la película
 
-    ***Colocar captura de pantalla del browser
-    
+![Screenshot from 2023-12-12 08-48-48](https://github.com/pabloblanco/GlobalStdCinema/assets/11873645/ef452f0a-fcc6-410d-84e7-16445926194b)
+ 
 11.- Edita la información de un turno
 
-    ***Colocar captura de pantalla del browser
+![Screenshot from 2023-12-12 08-57-41](https://github.com/pabloblanco/GlobalStdCinema/assets/11873645/a6316058-d952-487a-b9ff-6efc523e4cef)
     
-12.- Edita el turno de una película
+12.- Edita la asignación del turno de una película
 
-13.- Borra la asiganción del turno a la película.
+    ***Colocar captura de pantalla del browser
+
+13.- Borra la asiganción del turno de la película.
 
     ***Colocar captura de pantalla del browser
     
 14.- Elimina la información del turno
 
-    ***Colocar captura de pantalla del browser
-    
-15.- Elimina la información de la película
+![Screenshot from 2023-12-12 08-56-41](https://github.com/pabloblanco/GlobalStdCinema/assets/11873645/3b8b317b-632c-4e14-9fdf-57b3e91d2987)
 
-    ***Colocar captura de pantalla del browser
+15.- Desactivar el turno
+
+![Screenshot from 2023-12-12 08-56-30](https://github.com/pabloblanco/GlobalStdCinema/assets/11873645/2d91ce90-3aae-44d4-bd61-91bafcca237e)
+    
+16.- Elimina la información de la película
+
+![Screenshot from 2023-12-12 08-49-25](https://github.com/pabloblanco/GlobalStdCinema/assets/11873645/039a3928-6743-4177-91bd-47acc484df68)
+
+17.- Desactivar la película
+
+![Screenshot from 2023-12-12 08-49-06](https://github.com/pabloblanco/GlobalStdCinema/assets/11873645/616d203e-be55-448d-8048-2bef0f308fd9)
+
     
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------
 # Pruebas del desarrollo
