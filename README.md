@@ -1,6 +1,7 @@
 # GlobalStdCinema
 
-Desarrollo de evaluación para la empresa Global Standard
+### Desarrollo de evaluación para la empresa Global Standard
+-------------------------------------------------------------------------------------------------------------------------------------------
 
 El ejercicio debe de cubrir los siguientes puntos:
                                                                                
@@ -16,6 +17,13 @@ El ejercicio debe de cubrir los siguientes puntos:
     - Añadir capa de seguridad para el consumo de los servicios, así como la seguridad de acceso a los módulos.
     - Se evaluará el orden en el código y buenas prácticas de programación.
     - Pruebas unitarias (opcional). 
+
+Para definir los aspectos estéticos se adjuntaron los siguientes mockups:
+
+![image](https://github.com/pabloblanco/GlobalStdCinema/assets/11873645/3cd74ded-e55e-4969-ae71-df4aa7f36d06)
+![image (1)](https://github.com/pabloblanco/GlobalStdCinema/assets/11873645/272cbe86-d9da-4cf8-9d8e-ea4ad2bef05b)
+![image (2)](https://github.com/pabloblanco/GlobalStdCinema/assets/11873645/5fb6ccce-2eec-48bd-a250-8f45f0621638)
+![image (3)](https://github.com/pabloblanco/GlobalStdCinema/assets/11873645/ee48f22b-6ff7-44a8-945e-65aec2141b08)
 
 -------------------------------------------------------------------------------------------------------------------------------------------
 # Detalles tecnológicos de la solución y estándares aplicados
