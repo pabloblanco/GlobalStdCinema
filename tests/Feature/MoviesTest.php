@@ -19,7 +19,7 @@ class MoviesTest extends TestCase
 
         factory(Movies::class, 5)->create();
 
-        $response = $this->get('/movie');
+        $response = $this->get('/movies');
 
         $response->assertOk();
 
@@ -36,14 +36,14 @@ class MoviesTest extends TestCase
 
         $movie = factory(Movies::class)->create();
 
-        $response = $this->get('/movie', $movie->id);
+        $response = $this->get('/movies', $movie->id);
 
         $response->assertOk();
 
         $movie = Movies::first();
 
         $response->assertViewIs('Movies/Show');
-        $response->assertViewHas('movie', $movie);
+        $response->assertViewHas('movies', $movies);
     }   
 
     /** @test */
@@ -51,7 +51,7 @@ class MoviesTest extends TestCase
     {
         $this->withoutExceptionHandling();
 
-        $response = $this->post('/movie', [
+        $response = $this->post('/movies', [
             'name' => 'Test Name', 
             'publish' => '17-11-2023',
             'image' => 'test_image.jpg',
@@ -74,7 +74,7 @@ class MoviesTest extends TestCase
     {    
         $this->withoutExceptionHandling();
 
-        $response = $this->post('/movie', [
+        $response = $this->post('/movies', [
             'name' => '', 
             'publish' => '17-11-2023',
             'image' => 'test_image.jpg',
@@ -88,7 +88,7 @@ class MoviesTest extends TestCase
     {    
         $this->withoutExceptionHandling();
 
-        $response = $this->post('/movie', [
+        $response = $this->post('/movies', [
             'name' => 'Test Name', 
             'publish' => '',
             'image' => 'test_image.jpg',
@@ -102,7 +102,7 @@ class MoviesTest extends TestCase
     {    
         $this->withoutExceptionHandling();
 
-        $response = $this->post('/movie', [
+        $response = $this->post('/movies', [
             'name' => 'Test Name', 
             'publish' => '17-11-2023',
             'image' => '',
@@ -118,7 +118,7 @@ class MoviesTest extends TestCase
 
         $movie = factory(Movies::class)->create();
 
-        $response = $this->put('/movie', $movie->id, [
+        $response = $this->put('/movies', $movie->id, [
             'name' => 'Test Edit Name', 
             'publish' => '11-11-2023',
             'image' => 'test_edit_image.jpg',
@@ -142,7 +142,7 @@ class MoviesTest extends TestCase
     {    
         $this->withoutExceptionHandling();
 
-        $response = $this->put('/movie', [
+        $response = $this->put('/movies', [
             'name' => '', 
             'publish' => '17-11-2023',
             'image' => 'test_image.jpg',
@@ -156,7 +156,7 @@ class MoviesTest extends TestCase
     {    
         $this->withoutExceptionHandling();
 
-        $response = $this->put('/movie', [
+        $response = $this->put('/movies', [
             'name' => 'Test Name', 
             'publish' => '',
             'image' => 'test_image.jpg',
@@ -170,7 +170,7 @@ class MoviesTest extends TestCase
     {    
         $this->withoutExceptionHandling();
 
-        $response = $this->put('/movie', [
+        $response = $this->put('/movies', [
             'name' => 'Test Name', 
             'publish' => '17-11-2023',
             'image' => '',
@@ -194,7 +194,7 @@ class MoviesTest extends TestCase
 
         $movie = factory(Movies::class)->create();
 
-        $response = $this->delete('/movie', $movie->id);
+        $response = $this->delete('/movies', $movie->id);
 
         $this->assertCount(0, Movies::all());
 

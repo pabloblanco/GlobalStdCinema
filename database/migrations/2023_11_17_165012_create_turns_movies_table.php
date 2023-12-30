@@ -14,11 +14,11 @@ return new class extends Migration
         Schema::create('turns_movies', function (Blueprint $table) {
             $table->id();
 
-            $table->unsignedBigInteger('movie_id');
-            $table->foreign('movie_id')->references('id')->on('movies')onDelete('cascade');
+            $table->unsignedBigInteger('movies_id');
+            $table->foreign('movies_id')->references('id')->on('movies')->onDelete('cascade');
 
-            $table->unsignedBigInteger('turn_id');
-            $table->foreign('turn_id')->references('id')->on('turns')onDelete('cascade');
+            $table->unsignedBigInteger('turns_id');
+            $table->foreign('turns_id')->references('id')->on('turns')->onDelete('cascade');
 
             $table->boolean('status')->default(true);    
             $table->timestamps();

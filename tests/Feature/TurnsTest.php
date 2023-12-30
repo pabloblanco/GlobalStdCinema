@@ -19,7 +19,7 @@ class TurnsTest extends TestCase
 
         factory(Turns::class, 5)->create();
 
-        $response = $this->get('/turn');
+        $response = $this->get('/turns');
 
         $response->assertOk();
 
@@ -36,7 +36,7 @@ class TurnsTest extends TestCase
 
         $turn = factory(Turns::class)->create();
 
-        $response = $this->get('/turn', $turn->id);
+        $response = $this->get('/turns', $turn->id);
 
         $response->assertOk();
 
@@ -51,7 +51,7 @@ class TurnsTest extends TestCase
     {
         $this->withoutExceptionHandling();
 
-        $response = $this->post('/turn', [
+        $response = $this->post('/turns', [
             'turn' => '10:00', 
         ]);
 
@@ -70,7 +70,7 @@ class TurnsTest extends TestCase
     {    
         $this->withoutExceptionHandling();
 
-        $response = $this->post('/turn', [
+        $response = $this->post('/turns', [
             'turn' => '10:00', 
         ]);
 
@@ -84,7 +84,7 @@ class TurnsTest extends TestCase
 
         $turn = factory(Turns::class)->create();
 
-        $response = $this->put('/turn', $turn->id, [
+        $response = $this->put('/turns', $turn->id, [
             'turn' => '10:00', 
             'status' => false,
         ]);
@@ -104,7 +104,7 @@ class TurnsTest extends TestCase
     {    
         $this->withoutExceptionHandling();
 
-        $response = $this->put('/turn', [
+        $response = $this->put('/turns', [
             'turn' => '', 
         ]);
 
@@ -126,7 +126,7 @@ class TurnsTest extends TestCase
 
         $turn = factory(Turns::class)->create();
 
-        $response = $this->delete('/turn', $turn->id);
+        $response = $this->delete('/turns', $turn->id);
 
         $this->assertCount(0, Turns::all());
 

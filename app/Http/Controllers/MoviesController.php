@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Movies;
 use App\Http\Requests\StoreMoviesRequest;
 use App\Http\Requests\UpdateMoviesRequest;
+use App\Http\Controllers\UploadController;
 
 use Inertia\Inertia;
 
@@ -15,7 +16,7 @@ class MoviesController extends Controller
      */
     public function index()
     {
-        $movies = Movies::with(turns)->paginate(25);
+        $movies = Movies::with('turns')->paginate(100);
         return Inertia::render('Movies/Index', ['movies' => $movies]);
     }
 
@@ -34,8 +35,12 @@ class MoviesController extends Controller
     {
         // La entrada de datos se valida en StoreMoviesRequest para respetar 
         // el principio SOLID de Single Responsability
-        Movies::create($request->validated());
-        return redirect('movie');
+        $movie = Movies::create($request->validated());
+        $fullPathAndImageFilename = UploadController::store($request->validated());
+        $movies->update([
+            'image' => $fullPathAndImageFilename
+        ]);     
+        return redirect('movies');
     }
 
     /**
@@ -57,20 +62,26 @@ class MoviesController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateMoviesRequest $request, Movies $movies)
+    public function update(UpdateMoviesRequest $request, $id)
     {
         // La entrada de datos se valida en UpdateMoviesRequest para respetar 
         // el principio SOLID de Single Responsability
-        $movies->fill($request->validated())->saveOrFail();
-        return redirect('movie');
+        $movie = Movies::find($id);
+        $movie->fill($request->validated())->saveOrFail();
+        $fullPathAndImageFilename = UploadController::store($request->validated());
+        $movies->update([
+            'image' => $fullPathAndImageFilename
+        ]);           
+        return redirect('movies');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Movies $movies)
+    public function destroy($id)
     {
-        $movies->delete();
-        return redirect('movie');
+        $movie = Movies::find($id);
+        $movie->delete();
+        return redirect('movies');
     }
 }

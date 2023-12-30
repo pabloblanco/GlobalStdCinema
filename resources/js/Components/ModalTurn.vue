@@ -1,6 +1,6 @@
 <script setup>
     import { useForm } from '@inertiajs/vue3';
-    import TextImput from '@/Components/TextInput.vue';
+    import TextInput from '@/Components/TextInput.vue';
     import CheckBox from '@/Components/Checkbox.vue';       
     const props = defineProps({
         turn:{type:Object, default:() => ({})},
@@ -10,13 +10,13 @@
         id:props.turn.id,turn:props.turn.turn,status:props.turn.status
     });
     const save = () =>{
-        form.post(route('turn.store'),{
+        form.post(route('turns.store'),{
             onSuccess: () => cerrar()
         });
     }
     const update = () =>{
         var id = document.getElementById('id2').value;
-        form.put(route('turn.update',id),{
+        form.put(route('turns.update',id),{
             onSuccess: () => cerrar()
         });
     }
@@ -40,15 +40,15 @@
                             <span class="input-group-text"><i class="fa-solid fa-clock"></i></span>
                             <TextInput :id="'turn'+op" class="form-control" type="text" name="turn" v-model="form.turn" maxlength="12" placeholder="Turno" required></TextInput>
                         </div>
-                        <div v-if="form-errors.turn" class="text-sm text-danger">
-                            {{ form-errors.turn }}
+                        <div v-if="form.errors.turn" class="text-sm text-danger">
+                            {{ form.errors.turn }}
                         </div>
                         <div>
                             <span class="input-group-text"><i class="fa-solid fa-lock"></i></span>
-                            <Checkbox :id="'status'+op" name="status" v-model="form.status"></Checkbox>
+                            <CheckBox :id="'status'+op" name="status" v-model="form.status"></Checkbox>
                         </div>   
-                        <div v-if="form-errors.status" class="text-sm text-danger">
-                            {{ form-errors.status }}
+                        <div v-if="form.errors.status" class="text-sm text-danger">
+                            {{ form.errors.status }}
                         </div>  
                         <div class="d-grid mx-auto">
                             <button class="btn btn-success" :disabled="form.processing">

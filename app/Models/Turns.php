@@ -13,6 +13,6 @@ class Turns extends Model
 
     public function movies()
     {
-        return $this->belongToMany(Movies::class,'turns_movies');
+        return $this->belongsToMany(Movies::class,'turns_movies');
     }
 }

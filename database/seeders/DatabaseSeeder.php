@@ -7,6 +7,10 @@ use Illuminate\Database\Seeder;
 
 use App\Models\Movies;
 use App\Models\Turns;
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\DB;
+
 
 class DatabaseSeeder extends Seeder
 {
@@ -23,10 +27,9 @@ class DatabaseSeeder extends Seeder
         {
             $turn->movies()->sync(
                 // Cada turno es asignado a 3 películas
-                Movies::all()->random(3);
+                Movies::all()->random(3)
             );
-        });
-
+        });        
         // \App\Models\User::factory(10)->create();
 
         // \App\Models\User::factory()->create([

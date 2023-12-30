@@ -6,6 +6,8 @@ use App\Models\Turns;
 use App\Http\Requests\StoreTurnsRequest;
 use App\Http\Requests\UpdateTurnsRequest;
 
+use Inertia\Inertia;
+
 class TurnsController extends Controller
 {
     /**
@@ -13,7 +15,7 @@ class TurnsController extends Controller
      */
     public function index()
     {
-        $turns = Turns::with(movies)->paginate(25);
+        $turns = Turns::with('movies')->paginate(25);
         return Inertia::render('Turns/Index', ['turns' => $turns]);
     }
 
@@ -34,7 +36,7 @@ class TurnsController extends Controller
         // el principio SOLID de Single Responsability
         $turn = new Turns($request->validated());
         $turn->save();
-        return redirect('turn');
+        return redirect('turns');
     }
 
     /**
@@ -56,20 +58,22 @@ class TurnsController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateTurnsRequest $request, Turns $turns)
+    public function update(UpdateTurnsRequest $request, $id)
     {
         // La entrada de datos se valida en UpdateTurnsRequest para respetar 
         // el principio SOLID de Single Responsability
-        $turns->fill($request->validated())->saveOrFail();
-        return redirect('turn');
+        $turn = Turns::find($id);
+        $turn->fill($request->validated())->saveOrFail();
+        return redirect('turns');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Turns $turns)
+    public function destroy($id)
     {
-        $turns->delete();
-        return redirect('turn');
+        $turn = Turns::find($id);
+        $turn->delete();
+        return redirect('turns');
     }
 }
