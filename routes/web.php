@@ -1,9 +1,12 @@
 <?php
 
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProfileController;
-use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
-use Inertia\Inertia;
+
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\MoviesController;
+use App\Http\Controllers\TurnsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,7 +19,11 @@ use Inertia\Inertia;
 |
 */
 
-Route::get('/', function () {
+// Se refactorizaron las rutas originales de inertia programando la logica
+// en un controlador para mantener el codigo limpio
+Route::get('/', [DashboardController::class, 'index']); 
+
+/* Route::get('/', function () {
     return Inertia::render('Welcome', [
         'canLogin' => Route::has('login'),
         'canRegister' => Route::has('register'),
@@ -27,12 +34,22 @@ Route::get('/', function () {
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard'); */
 
 Route::middleware('auth')->group(function () {
+    Route::get('/about', fn () => Inertia::render('About'))->name('about');
+
+    Route::get('users', [UserController::class, 'index'])->name('users.index');
+
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');     
+    Route::resource('movies', MoviesController::class);
+    Route::resource('turns', TurnsController::class);  
+    Route::delete('/upload', [UploadController::class, 'delete']);
+    Route::post('/upload', [UploadController::class, 'store']);  
 });
 
 require __DIR__.'/auth.php';
